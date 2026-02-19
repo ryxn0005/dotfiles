@@ -18,11 +18,13 @@ static const float rootcolor[]             = COLOR(0x000000ff);
 static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
 static int enableautoswallow = 1; /* enables autoswallowing newly spawned clients */
 static float swallowborder = 1.0f; /* add this multiplied by borderpx to border when a client is swallowed */
+static const uint32_t col_black = 0x16161dff;
+static const uint32_t col_white = 0xb9bdc5ff;
 static uint32_t colors[][3]                = {
-	/*               fg          bg          border    */
-	[SchemeNorm] = { 0xbbbbbbff, 0x222222ff, 0x444444ff },
-	[SchemeSel]  = { 0xeeeeeeff, 0x005577ff, 0x005577ff },
-	[SchemeUrg]  = { 0,          0,          0x770000ff },
+	/*               fg         bg         border    */
+	[SchemeNorm] = { col_white, col_black, col_black },
+	[SchemeSel]  = { col_black, col_white, col_white },
+	[SchemeUrg]  = { 0,         0,         0x770000ff },
 };
 
 /* tagging */
@@ -132,6 +134,10 @@ static const char *menucmd[] = {
 	"wmenu-run",
 	"-f", "JetBrainsMono Nerd Font Bold 16",
 	"-l", "5",
+	"-N", "#16161d",  /* normal bg */
+	"-n", "#b9bdc5",  /* normal fg */
+	"-S", "#b9bdc5",  /* selection bg */
+	"-s", "#16161d",  /* selection fg */
 	NULL
 };
 
