@@ -1,0 +1,16 @@
+#!/bin/sh
+
+day_in_vietnamese() {
+  english_day=$(date '+%A')
+  case $english_day in
+  Monday) echo "thứ hai" ;;
+  Tuesday) echo "thứ ba" ;;
+  Wednesday) echo "thứ tư" ;;
+  Thursday) echo "thứ năm" ;;
+  Friday) echo "thứ sáu" ;;
+  Saturday) echo "thứ bảy" ;;
+  Sunday) echo "chủ nhật" ;;
+  esac
+}
+
+echo "$(day_in_vietnamese), ngày $(date '+%d tháng %m năm %Y')"

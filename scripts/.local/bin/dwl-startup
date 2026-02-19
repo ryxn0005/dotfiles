@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# kill duplicates
+killall -9 mako swaybg wl-paste foot widle 2>/dev/null
+
+# autostart
+swaybg --output '*' --mode fill --image "$(cat ~/.cache/current_wallpaper)" &
+wl-paste --watch cliphist store &
+widle -wait-idle 300 -command 'wlock' &
+foot --server &
+
+# dbus env (must be before portals and mako)
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots
+
+# mako after dbus
+mako &
+
+# portals
+killall xdg-desktop-portal-wlr xdg-desktop-portal-gtk xdg-desktop-portal 2>/dev/null
+sleep 1
+/usr/lib/xdg-desktop-portal-wlr &
+/usr/lib/xdg-desktop-portal-gtk &
+sleep 2
+/usr/lib/xdg-desktop-portal &

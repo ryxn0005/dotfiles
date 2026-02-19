@@ -1,0 +1,14 @@
+#!/bin/sh
+SESSION="${1:-dev}"
+
+tmux has-session -t "$SESSION" 2>/dev/null
+if [ $? != 0 ]; then
+    tmux new-session -d -s "$SESSION" -x 200 -y 50
+    tmux send-keys -t "$SESSION" "nvim ." Enter
+    tmux split-window -h -t "$SESSION" -p 40
+    tmux send-keys -t "$SESSION" "claude" Enter
+    tmux select-pane -t 0
+    tmux split-window -v -t "$SESSION" -p 25
+    tmux select-pane -t 0
+fi
+tmux attach -t "$SESSION"
