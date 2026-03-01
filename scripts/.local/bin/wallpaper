@@ -6,4 +6,4 @@ wallpaper=$(ls ~/Pictures | wmenu -i -f "JetBrainsMono Nerd Font Bold 16" -l 5 -
 
 killall swaybg 2>/dev/null
 echo "$HOME/Pictures/$wallpaper" >~/.cache/current_wallpaper
-swaybg --output '*' --mode center --image "$HOME/Pictures/$wallpaper" &
+swaybg --output '*' --mode fill --image "$HOME/Pictures/$wallpaper" &

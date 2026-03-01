@@ -4,7 +4,7 @@
 killall -9 mako swaybg wl-paste foot widle 2>/dev/null
 
 # autostart
-swaybg --output '*' --mode center --image "$(cat ~/.cache/current_wallpaper)" &
+swaybg --output '*' --mode fill --image "$(cat ~/.cache/current_wallpaper)" &
 wl-paste --watch cliphist store &
 widle -wait-idle 300 -command 'wlock' &
 foot --server &
