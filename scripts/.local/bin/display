@@ -1,0 +1,19 @@
+#!/bin/sh
+# display
+# Sets BenQ XL2546X+ to 1920x1080@240Hz if connected, otherwise falls back to built-in.
+
+BENQ_OUTPUT="HDMI-A-3"
+BUILTIN_OUTPUT="eDP-1"
+
+benq_connected() {
+  wlr-randr | grep -q "^${BENQ_OUTPUT} "
+}
+
+if benq_connected; then
+  wlr-randr \
+    --output "${BENQ_OUTPUT}" --on --mode 1920x1080@239.964Hz --pos 0,0 --scale 1 \
+    --output "${BUILTIN_OUTPUT}" --off
+else
+  wlr-randr \
+    --output "${BUILTIN_OUTPUT}" --on --mode 1920x1080@60Hz --pos 0,0 --scale 1
+fi

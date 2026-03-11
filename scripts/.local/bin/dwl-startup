@@ -3,6 +3,9 @@
 # kill duplicates
 killall -9 mako swaybg wl-paste foot widle 2>/dev/null
 
+# display setup
+~/.local/bin/display
+
 # autostart
 swaybg --output '*' --mode fill --image "$(cat ~/.cache/current_wallpaper)" &
 wl-paste --watch cliphist store &
